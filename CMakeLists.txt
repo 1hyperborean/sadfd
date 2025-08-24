@@ -24,6 +24,10 @@ file(GLOB_RECURSE SOURCES_RECURSIVE "src/**/*.cpp")
 # combine all sources
 set(ALL_SOURCES ${SOURCES} ${SOURCES_RECURSIVE})
 
+message(STATUS "SOURCES: ${SOURCES}")
+message(STATUS "SOURCES_RECURSIVE: ${SOURCES_RECURSIVE}")
+message(STATUS "ALL_SOURCES: ${ALL_SOURCES}")
+
 # include directories for headers
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
