@@ -3,7 +3,18 @@
 #include <cstddef>
 #include <stdexcept>
 
+HashTable::~HashTable() {
+  for (Node* head : bucket) {
+      while (head != nullptr) {
+          Node* temp = head;
+          head = head->next;
+          delete temp;
+      }
+  }
+}
+
 void HashTable::insert(const std::string& key, const std::string& value) {
+  checkAndResize();
   size_t index = calculateBucketIndex(key);
 
   Node* current = bucket[index];
