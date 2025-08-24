@@ -29,7 +29,5 @@ public:
   HashTable() : bucket(DEFAULT_BUCKET_COUNT, nullptr), size(0) {}
   
   void insert(const std::string& key, const std::string& value);
-  std::string get(const std::string& key) {
-
-  }
+  std::string get(const std::string& key);
 };
