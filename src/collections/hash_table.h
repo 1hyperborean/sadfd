@@ -30,4 +30,5 @@ public:
   
   void insert(const std::string& key, const std::string& value);
   std::string get(const std::string& key);
+  bool contains(const std::string& key);
 };
