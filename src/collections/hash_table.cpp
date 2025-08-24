@@ -13,6 +13,16 @@ HashTable::~HashTable() {
   }
 }
 
+HashTable::HashTable(const HashTable& other) : bucket(other.bucket.size(), nullptr), size(0) {
+  for (size_t i = 0; i < other.bucket.size(); i++) {
+    Node* otherNode = other.bucket[i];
+    while (otherNode != nullptr) {
+      insert(otherNode->key, otherNode->value);
+      otherNode = otherNode->next;
+    }
+  }
+}
+
 void HashTable::insert(const std::string& key, const std::string& value) {
   checkAndResize();
   size_t index = calculateBucketIndex(key);

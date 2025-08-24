@@ -49,6 +49,7 @@ public:
 
   HashTable() : bucket(DEFAULT_BUCKET_COUNT, nullptr), size(0) {}
   ~HashTable();
+  HashTable(const HashTable& other);
 
   void insert(const std::string& key, const std::string& value);
   std::string get(const std::string& key);
