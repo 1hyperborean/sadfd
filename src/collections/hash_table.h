@@ -31,4 +31,7 @@ public:
   void insert(const std::string& key, const std::string& value);
   std::string get(const std::string& key);
   bool contains(const std::string& key);
+  Node* findNode(const std::string& key);
+  bool remove(const std::string& key);
+  std::string pop(size_t bucketIndex);
 };
