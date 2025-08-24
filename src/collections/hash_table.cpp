@@ -23,6 +23,34 @@ HashTable::HashTable(const HashTable& other) : bucket(other.bucket.size(), nullp
   }
 }
 
+HashTable& HashTable::operator=(const HashTable& other) {
+  if (this == &other) {
+    return *this;
+  }
+
+  for (Node* node : bucket) {
+    while (node != nullptr) {
+      Node* temp = node;
+      node = node->next;
+      delete temp;
+    }
+  }
+
+  bucket.clear();
+  bucket.resize(other.bucket.size(), nullptr);
+  size = 0;
+
+  for (size_t i = 0; i < other.bucket.size(); i++) {
+    Node* otherNode = other.bucket[i];
+    while (otherNode != nullptr) {
+      insert(otherNode->key, otherNode->value);
+      otherNode = otherNode->next;
+    }
+  }
+
+  return *this;
+}
+
 void HashTable::insert(const std::string& key, const std::string& value) {
   checkAndResize();
   size_t index = calculateBucketIndex(key);
