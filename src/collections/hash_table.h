@@ -17,11 +17,19 @@ private:
   };
   std::vector<Node*> bucket;
   size_t size;
+
+  size_t calculateBucketIndex(const std::string& key) {
+    size_t index = std::hash<std::string>{}(key) % bucket.size();
+    return index;
+  }
 public:
   static const size_t DEFAULT_BUCKET_COUNT = 16;
   size_t LOAD_FACTOR_TRESHOLD;
 
   HashTable() : bucket(DEFAULT_BUCKET_COUNT, nullptr), size(0) {}
-
+  
   void insert(const std::string& key, const std::string& value);
+  std::string get(const std::string& key) {
+
+  }
 };

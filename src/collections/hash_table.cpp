@@ -1,11 +1,7 @@
 #include "hash_table.h"
 
 void HashTable::insert(const std::string& key, const std::string& value) {
-  if (bucket.size() == 0) {
-
-  }
-  
-  size_t index = std::hash<std::string>{}(key) % bucket.size();
+  size_t index = calculateBucketIndex(key);
 
   Node* current = bucket[index];
   while (current != nullptr) {
