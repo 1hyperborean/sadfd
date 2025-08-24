@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.16)
-project(redis-cpp VERSION 0.1.0 LANGUAGES CXX)
+project(redis-cpp VERSION 0.1.0 LANGUAGES C)
 
 # C++ standard
-set(CMAKE_CXX_STANDARD_17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # set build type if not specified
 if(NOT CMAKE_BUILD_TYPE)
@@ -11,15 +11,15 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # compiler flags
-set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -Wall -Wextra")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -Wall -Wextra")
+set(CMAKE_C_FLAGS_DEBUG "-g -O0 -Wall -Wextra")
+set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG -Wall -Wextra")
 
 # find required packages
 find_package(Threads REQUIRED)
 
 # automatically find all source files
-file(GLOB SOURCES "src/*.cpp")
-file(GLOB_RECURSE SOURCES_RECURSIVE "src/**/*.cpp")
+file(GLOB SOURCES "src/*.c")
+file(GLOB_RECURSE SOURCES_RECURSIVE "src/**/*.c")
 
 # combine all sources
 set(ALL_SOURCES ${SOURCES} ${SOURCES_RECURSIVE})
